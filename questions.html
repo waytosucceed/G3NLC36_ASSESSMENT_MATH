@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questions</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="Logo_last.png">
+  <script src="./questions.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.7.0/dist/confetti.browser.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+
+</head>
+<style>
+
+#questiondiv.full-width {
+  width: 100%;
+}
+
+
+
+#subbtn, #nextbtn {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+#subbtn:hover, #nextbtn:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+#question{
+  width: 75%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 1.8vw;
+  button{
+    color:black;
+    background-color: rgb(255, 255, 255,0.5);
+  }
+}
+
+
+
+/* #picdiv {
+    
+    position: relative;
+    width: 70%;
+} */
+#buttonContainer{
+  *{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    }
+}
+
+</style>
+<body>
+  <audio id="cheers">
+    <source src="cheers.mp3" type="audio/mpeg">
+  </audio>
+  <!-- <audio id="points" src="Points.mp3"></audio> -->
+  <!-- <audio id="fail" src="fail.mp3"></audio> -->
+  <audio id="submit-sound" src="./assests/sounds/submit.mp3"></audio>
+
+  <header class="header">
+    <img src="./assests/logo/Logo.png" alt="Logo" class="logo">
+    <span><img src="./assests/logo/header.png" alt="Header" class="header-image"></span>
+  </header>
+  <main class="container">
+    <h1 id="heading" class="text-center"></h1>
+    <div id="buttonContainer" class="text-center"></div>
+    <div class="row maindiv">
+      <!-- <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 numdiv">
+        <p id="numdiv"></p>
+      </div> -->
+      <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 imgdiv" id="picdiv">
+        <div id="question" class="question"></div>
+
+        <img id="question_background" src="./assests/images/background.png" class="img-responsive">
+
+      </div>
+      <div id="questiondiv" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+        <!-- <div id="question"></div> -->
+        <div id="passageText" style="display: none; margin-top: 20px;"></div>
+
+        <br>
+        <div class="menu" id="head">
+          <ul id="options" class="option"></ul>
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center;">
+        <button id="subbtn" class="btn btn-success" onclick="checkAnswer()">Submit Answer</button>
+        <button id="nextbtn" class="btn btn-primary" onclick="newques()" style="display:none">Next</button>
+      </div>
+        <p id="result"></p>
+      </div>
+      
+    </div>
+  </main>
+</body>
+</html>

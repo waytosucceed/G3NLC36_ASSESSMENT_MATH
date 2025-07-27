@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results</title>
+    <link rel="stylesheet" href="wts.css" />
+    <link rel="icon" type="image/x-icon" href="Logo_last.png" />
+
+    <!-- Include Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include html2canvas and jsPDF libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+    <style>
+      .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5em;
+        z-index: 9999;
+        display: none; /* Hidden by default */
+      }
+      body {
+        font-family: 'Comic Neue', Arial, sans-serif;
+        font-weight: 500;
+        background-color: #6482AD !important;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        
+      }
+
+    
+      #heading {
+        margin-top: 25px;
+        color: #d6b65b;
+        font-size: 2.5rem;
+        /* text-align: center; */
+      }
+
+      .chart-container {
+        width: 80%;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+      }
+
+      canvas {
+        border-radius: 8px;
+        background-color: #f9f9f9;
+      }
+
+      .marks-breakdown {
+        text-align: left;
+        margin: 20px auto;
+        width: 80%;
+        max-width: 800px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+      }
+
+      .marks-breakdown h2 {
+        margin-top: 0;
+        color: #333;
+      }
+
+      .marks-breakdown ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .marks-breakdown li {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .marks-breakdown li:last-child {
+        border-bottom: none;
+      }
+
+      .download-button {
+        display: block;
+        width: 25%;
+        /* margin: 30px auto; */
+        margin-top: 30px;
+        padding: 10px;
+        font-size: 1.1em;
+       
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        font-weight: 600;
+        background-color: greenyellow;
+        color: black;
+      }
+
+      .download-button:hover {
+        color: #fff;
+        background-color: #FF0000;
+      }
+
+      #questiondiv,
+      #picdiv {
+        margin: 20px auto;
+        width: 80%;
+        max-width: 800px;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+      }
+
+      #questiondiv h3 {
+        margin-top: 0;
+        color: #d6b65b;
+      }
+
+      #questiondiv div {
+        padding: 10px;
+      }
+      @media print {
+        body {
+          font-size: 12pt; /* Adjust this size as needed */
+        }
+
+        .chart-container,
+        .marks-breakdown,
+        #questiondiv,
+        #picdiv {
+          width: 100%; /* Ensure full width */
+          margin: 0;
+          padding: 0;
+          box-shadow: none;
+          border: none;
+        }
+
+        canvas {
+          max-width: 100%;
+        }
+
+        .download-button {
+          display: none; /* Hide download button in PDF */
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <img src="./assests/logo/Logo.png" alt="Logo" class="logo">
+      <img src="./assests/logo/header.png" alt="Header" class="header-image">
+    </header>
+    <div style="display: flex; justify-content: center;">
+    <img src="./assests/download.gif" alt="Download Animation" width="150px" style="margin-top: 30px;">
+    <button class="download-button" id="downloadBtn">Download Report</button>
+  </div>
+    <div class="chart-container">
+      <canvas id="myBarChart"></canvas>
+    </div>
+
+    <div class="marks-breakdown" id="breakdown">
+      <h2>Marks Breakdown - <span id="className"></span></h2>
+      <ul id="marksList"></ul>
+    </div>
+
+    <div id="picdiv"></div>
+    <div id="questiondiv"></div>
+    <div style="display: flex; justify-content: center;">
+      <img src="./assests/download.gif" alt="Download Animation" width="150px" style="margin-top: 30px;">
+      <button class="download-button" id="downloadBtn2">Download Report</button>
+      </div>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">Downloading...</div>
+
+    <script>
+       // Create an audio object for the well-done sound
+    const wellDoneSound = new Audio('./assests/sounds/well-done.mp3');
+
+// Play the sound
+wellDoneSound.play()
+    .then(() => {
+        console.log('Well-done sound played successfully');
+    })
+    .catch(error => {
+        console.error('Error playing well-done sound:', error);
+    });
+
+        const uniqueKey = "Assessment";
+        const className = "Assessment";
+        document.getElementById('className').innerText = className;
+
+        function getFromLocalStorage(key) {
+        let storageData = JSON.parse(localStorage.getItem(key)) || {};
+        return storageData;
+      }
+
+      function clearLocalStorage() {
+        console.log("Clearing local storage...");
+
+        localStorage.removeItem(uniqueKey);
+
+      }
+
+      // Function to load and display all results with '_question_content'
+      function loadAllResults() {
+        const questionContentDiv = document.getElementById("questiondiv");
+        const picContentDiv = document.getElementById("picdiv");
+        document.getElementById("picdiv").style.display = "none";
+
+        // Clear existing content
+        questionContentDiv.innerHTML = "";
+        picContentDiv.innerHTML = "";
+
+        // // Retrieve all keys from local storage
+        // Object.keys(localStorage).forEach((key) => {
+        //   if (key.includes("_question_content")) {
+        //     const content = localStorage.getItem(key);
+        //     const topicName = key.replace("_question_content", ""); // Extract topic name
+
+        //     // Create a container for each topic
+        //     const topicContainer = document.createElement("div");
+        //     topicContainer.style.marginBottom = "20px";
+        //     topicContainer.style.padding = "10px";
+        //     topicContainer.style.border = "1px solid #ddd";
+        //     topicContainer.style.borderRadius = "8px";
+        //     topicContainer.style.backgroundColor = "#fff";
+
+        //     // Create and append the topic heading
+        //     const heading = document.createElement("h3");
+        //     heading.textContent = topicName;
+        //     heading.style.marginTop = "0";
+        //     heading.style.color = "#D6B65B";
+        //     topicContainer.appendChild(heading);
+
+        //     // Create and append the content
+        //     const contentDiv = document.createElement("div");
+        //     contentDiv.innerHTML = content;
+        //     contentDiv.style.padding = "10px";
+        //     topicContainer.appendChild(contentDiv);
+
+        //     // Append the topic container to the questionContentDiv
+        //     questionContentDiv.appendChild(topicContainer);
+        //   }
+        // });
+     
+        displayContentForKey(uniqueKey);
+
+      }
+
+        // Function to display content based on the unique key
+        function displayContentForKey(uniqueKey) {
+        // Get the data associated with the uniqueKey
+        const data = getFromLocalStorage(uniqueKey);
+        console.log("data", data);
+
+        // Ensure data is an object and contains _question_content
+        if (data && typeof data === "object") {
+          Object.keys(data).forEach((key) => {
+            console.log("key", key);
+
+            // Check if the key includes "_question_content"
+            if (key.includes("_question_content")) {
+              console.log("ok");
+              const content = data[key];
+              const topicName = key.replace("_question_content", ""); 
+
+              // Create a container for each topic
+              const topicContainer = document.createElement("div");
+              topicContainer.style.marginBottom = "20px";
+              topicContainer.style.padding = "10px";
+              topicContainer.style.border = "1px solid #ddd";
+              topicContainer.style.borderRadius = "8px";
+              topicContainer.style.backgroundColor = "#fff";
+
+              // Create and append the topic heading
+              const heading = document.createElement("h3");
+              heading.textContent = topicName;
+              heading.style.marginTop = "0";
+              heading.style.color = "#D6B65B";
+              topicContainer.appendChild(heading);
+
+              // Create and append the content
+              const contentDiv = document.createElement("div");
+              contentDiv.innerHTML = content;
+              contentDiv.style.padding = "10px";
+              topicContainer.appendChild(contentDiv);
+
+              // Append the topic container to the questionContentDiv
+              document
+                .getElementById("questiondiv")
+                .appendChild(topicContainer);
+            }
+          });
+        } else {
+          console.warn("No data available for the key:", uniqueKey);
+        }
+      }
+
+      // Call this function to load and display results
+      loadAllResults();
+
+
+
+      const data2 = JSON.parse(localStorage.getItem(uniqueKey)) || {};
+      const topics = data2.topics || [];
+      console.log("topics", topics);
+
+// Fetch topics, scores, and total marks from localStorage
+// const topics = JSON.parse(localStorage.getItem("topics")) || [];
+
+// Filter out the "Theory" topic
+const filteredTopics = topics.filter(topic => topic.heading !== "Subjective");
+
+ /// Fetch scores and total marks using the unique key
+ const scores = filteredTopics.map(
+        (topic) => parseInt(data2[`${topic.heading}_score`]) || 0
+      );
+      const totalMarks = filteredTopics.map(
+        (topic) => parseInt(data2[`${topic.heading}_totalQuestions`]) || 0
+      );
+      console.log("totalMarks", totalMarks)
+// // Fetch scores and total marks for filtered topics
+// const scores = filteredTopics.map(
+//   topic => parseInt(localStorage.getItem(topic.heading + "_score")) || 0
+// );
+// const totalMarks = filteredTopics.map(
+//   topic => parseInt(localStorage.getItem(topic.heading + "_totalQuestions")) || 0
+// );
+
+// Calculate percentage scores
+const percentageScores = scores.map((score, index) => {
+  const total = totalMarks[index];
+  return total > 0 ? (score / total) * 100 : 0;
+});
+
+// Data for the chart
+const data = {
+  labels: filteredTopics.map(topic => topic.heading),
+  datasets: [
+    {
+      label: "Percentage Scored",
+      data: percentageScores,
+      backgroundColor: "rgba(70, 192, 192, 0.6)",
+      borderColor: "rgba(70, 192, 192, 1)",
+      borderWidth: 1,
+    },
+  ],
+};
+
+// Configuration options for the chart
+const options = {
+  scales: {
+    y: {
+      beginAtZero: true,
+      max: 100, // Set the y-axis to 100% as maximum
+      title: {
+        display: true,
+        text: "Percentage Scored (%)",
+      },
+      ticks: {
+        callback: function (value) {
+          return value + "%"; // Append '%' to y-axis labels
+        },
+      },
+    },
+  },
+  plugins: {
+    legend: {
+      position: "top",
+    },
+    tooltip: {
+      callbacks: {
+        label: function (context) {
+          return context.dataset.label + ": " + context.raw.toFixed(2) + "%"; // Show percentage in tooltip
+        },
+      },
+    },
+  },
+};
+
+// Get the canvas element
+const ctx = document.getElementById("myBarChart").getContext("2d");
+
+// Create the bar chart
+const myBarChart = new Chart(ctx, {
+  type: "bar",
+  data: data,
+  options: options,
+});
+
+// Display the marks breakdown
+const marksList = document.getElementById("marksList");
+marksList.innerHTML = "";
+
+// filteredTopics.forEach((topic, index) => {
+//   const li = document.createElement("li");
+//   li.innerHTML = `<strong>${topic.heading}:</strong> <span>${scores[index]} / ${totalMarks[index]} (${percentageScores[index].toFixed(2)}%)</span>`;
+//   marksList.appendChild(li);
+// });
+// Create and append list items for each topic
+// Iterate through all topics to display their scores
+// Calculate total marks and overall percentage
+
+filteredTopics.forEach((topic, index) => {
+  const li = document.createElement("li");
+
+  // Ensure that you're not overwriting previous topics
+  li.innerHTML = `<strong>${topic.heading}:</strong> 
+    <span>${scores[index]} / ${totalMarks[index]} 
+    (${percentageScores[index].toFixed(2)}%)</span>`;
+
+  // Append each topic to the list instead of replacing it
+  marksList.appendChild(li);
+});
+const totalScore = scores.reduce((acc, score) => acc + score, 0);
+const totalMaxMarks = totalMarks.reduce((acc, mark) => acc + mark, 0);
+const overallPercentage = totalMaxMarks > 0 ? (totalScore / totalMaxMarks) * 100 : 0;
+
+// Display total marks and percentage
+const totalMarksDiv = document.createElement("div");
+totalMarksDiv.innerHTML = `<h2>Total Marks: ${totalScore} / ${totalMaxMarks} (<span>${overallPercentage.toFixed(2)}%</span>)</h2>`;
+totalMarksDiv.style.margin = "20px 0";
+totalMarksDiv.style.fontWeight = "600";
+
+// Append to the breakdown section
+marksList.parentNode.insertBefore(totalMarksDiv, marksList);
+
+
+
+      async function downloadReport() {
+        
+        const { jsPDF } = window.jspdf;
+
+        // Show the loading overlay
+        document.getElementById("loadingOverlay").style.display = "flex";
+
+        // Create a new jsPDF instance
+        const pdf = new jsPDF("p", "mm", "a4");
+
+        // Set standard font size
+        pdf.setFontSize(12);
+
+        // Function to load an image
+        async function loadImage(src) {
+         
+          return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(img);
+            img.src = src;
+          });
+        }
+
+        // Load the logo and banner images
+        const logo = await loadImage("./assests/logo/Logo.png");
+        const banner = await loadImage("./assests/logo/banner.png");
+
+        // Function to add the logo to the top right corner of a page
+        function addLogo(pdf) {
+          const pageWidth = pdf.internal.pageSize.getWidth();
+          pdf.addImage(logo, "JPEG", pageWidth - 30, 10, 20, 20); // Adjust the size and position as needed
+        }
+
+        // Add the banner to the top of the first page
+        const bannerWidth = pdf.internal.pageSize.getWidth() - 20; // Adjust based on desired width with margins
+        const bannerHeight = (banner.height * bannerWidth) / banner.width; // Maintain aspect ratio
+        pdf.addImage(
+          banner,
+          "JPEG",
+          10,
+          10,
+          bannerWidth,
+          bannerHeight,
+          "",
+          "FAST"
+        ); // Use JPEG for better compression
+
+        // Adjust the yOffset for the chart to be below the banner
+        let yOffset = bannerHeight + 20; // 20 for some extra space between banner and chart
+
+        // Convert the chart to an image with compression
+        const chartImage = document
+          .getElementById("myBarChart")
+          .toDataURL("image/png", 0.7); // 0.7 for image quality
+
+        // Add the chart image to the PDF
+        const chartWidth = 190; // Adjust based on desired width
+        const chartHeight = (chartWidth * 100) / 190; // Maintain aspect ratio
+        pdf.addImage(
+          chartImage,
+          "JPEG",
+          10,
+          yOffset,
+          chartWidth,
+          chartHeight,
+          "",
+          "FAST"
+        ); // Compress using JPEG
+
+        // Convert the marks breakdown to an image with compression
+        const breakdownElement = document.getElementById("breakdown");
+        const breakdownCanvas = await html2canvas(breakdownElement, {
+          scale: 1, // Reduce the scale to decrease resolution
+        });
+        
+        const breakdownImage = breakdownCanvas.toDataURL("image/png", 0.7); // Compress the image
+
+        // Add the marks breakdown image to the same page if content is small
+        const breakdownWidth = pdf.internal.pageSize.getWidth() - 20;
+        const breakdownHeight =
+          (breakdownCanvas.height * breakdownWidth) / breakdownCanvas.width;
+        const spaceLeft =
+          pdf.internal.pageSize.getHeight() - (yOffset + chartHeight + 20);
+
+        if (breakdownHeight <= spaceLeft) {
+          pdf.addImage(
+            breakdownImage,
+            "JPEG",
+            10,
+            yOffset + chartHeight + 20,
+            breakdownWidth,
+            breakdownHeight,
+            "",
+            "FAST"
+          );
+        } else {
+          pdf.addPage();
+          addLogo(pdf);
+          pdf.addImage(
+            breakdownImage,
+            "JPEG",
+            10,
+            10,
+            breakdownWidth,
+            breakdownHeight,
+            "",
+            "FAST"
+          );
+        }
+
+        
+        // Function to add content with pagination support
+        async function addContentWithPagination(element, pdf, yOffset = 10) {
+          const canvas = await html2canvas(element, { scale: 0.75 }); // Adjust the scale to decrease resolution
+          const imageData = canvas.toDataURL("image/jpeg", 0.7); // Use JPEG and compress the image
+
+          const imageWidth = canvas.width;
+          const imageHeight = canvas.height;
+
+          const pdfWidth = 210; // A4 width in mm
+          const pdfHeight = 297; // A4 height in mm
+          const imageWidthMM = pdfWidth - 20; // Width with margins
+          const imageHeightMM = (imageHeight * imageWidthMM) / imageWidth; // Maintain aspect ratio
+
+          const chunkHeight = pdfHeight - 20; // Adjust margins
+          let position = yOffset;
+
+          while (position < imageHeightMM) {
+            pdf.addImage(
+              imageData,
+              "JPEG",
+              10,
+              position,
+              imageWidthMM,
+              chunkHeight,
+              "",
+              "FAST"
+            ); // Compress using JPEG
+            addLogo(pdf);
+
+            position += chunkHeight;
+            // if (position < imageHeightMM) {
+            //   pdf.addPage();
+            //   addLogo(pdf);
+
+            //   position = 10;
+            // }
+            //  console.log("test new")
+          }
+        }
+
+        // Add a new page for each question
+        const questionContentDiv = document.getElementById("questiondiv");
+        const questionChildren = questionContentDiv.children;
+        for (let i = 0; i < questionChildren.length; i++) {
+
+          const questionDiv = questionChildren[i];
+          pdf.addPage();
+          addLogo(pdf); // Add the logo to each new page
+
+          await addContentWithPagination(questionDiv, pdf);
+          // console.log("test loop")
+
+        }
+        // console.log("test")
+
+
+        // Save the PDF
+        pdf.save(`${className}-report.pdf`);
+
+        // Hide the loading overlay
+        document.getElementById("loadingOverlay").style.display = "none";
+        clearLocalStorage();
+        window.location.href = 'thankyou.html';
+
+      }
+
+      document
+        .getElementById("downloadBtn")
+        .addEventListener("click", downloadReport);
+      document
+        .getElementById("downloadBtn2")
+        .addEventListener("click", downloadReport);
+
+      // Resize chart on window resize
+      function resize() {
+        myBarChart.resize();
+      }
+
+      window.addEventListener("resize", resize);
+    </script>
+  </body>
+</html>

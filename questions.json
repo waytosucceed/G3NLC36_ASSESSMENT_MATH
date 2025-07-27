@@ -1,0 +1,468 @@
+{
+    "heading": "Assessment",
+    "topics": [
+      {
+        "heading": "Solid Shapes",
+        "questions": [
+  {
+    "questionNo": 1,
+    "question": "Mia has a gift box with equal-length sides. What 3D shape is it?<br><img width='30%' src='./assests/images/question/1.png'>",
+    "options": [
+      { "text": "Cuboid" },
+      { "text": "Cube" },
+      { "text": "Cone" },
+      { "text": "Pyramid" }
+    ],
+    "answer": 1
+  },
+  {
+    "questionNo": 2,
+    "question": "Ron spotted a juice bottle on the table. What shape does it represent?<br><img width='30%' src='./assests/images/question/2.png'>",
+    "options": [
+      { "text": "Cone" },
+      { "text": "Cube" },
+      { "text": "Cylinder" },
+      { "text": "Sphere" }
+    ],
+    "answer": 2
+  },
+  {
+    "questionNo": 3,
+    "question": "How many edges does this shape have?<br><img width='40%' src='./assests/images/question/3.png'>",
+    "options": [
+      { "text": "8" },
+      { "text": "12" },
+      { "text": "6" },
+      { "text": "4" }
+    ],
+    "answer": 1
+  },
+  {
+    "questionNo": 4,
+    "question": "Identify the solid shape whose net is given below.<br><img width='40%' src='./assests/images/question/4.png'>",
+    "options": [
+      { "text": "Cube" },
+      { "text": "Cone" },
+      { "text": "Cylinder" },
+      { "text": "Cuboid" }
+    ],
+    "answer": 2
+  }
+]
+
+      },
+      {
+        "heading": "Division Using Grouping and Arrays ",
+        "questions": [
+          {
+            "questionNo": 5,
+            "question": "<div style='display:flex'><div style='width:40%'>Fill in the blanks to complete the division sentence.</div><div style='width:60%'><img width='65%' src='./assests/images/question/5.png'></div></div>",
+            "inputBox": {
+              "row1": [
+                { "operand": "There are" },
+                { "operand": "" },
+                { "operand": "cupcakes in each group." }
+              ],
+              "row2": [
+                { "operand": "So, 42 ÷ 7 =" },
+                { "operand": "" }
+              ]
+            },
+            "answer": ["6","6"]
+          },
+          {
+            "questionNo": 6,
+            "question": "Identifying the correct division statement represented by the model.<br><img width='65%' src='./assests/images/question/6.png'>",
+            "options": [
+              { "text": "21 ÷ 3 = 7" },
+              { "text": "24 ÷ 3 = 8" },
+              { "text": "21 ÷ 7 = 3" },
+              { "text": "27 ÷ 3 = 9" }
+            ],
+            "answer": 2
+          },
+          
+          {
+            "questionNo": 7,
+            "question": "<div style='display:flex'><div style='width:40%'>Liam discovered cars arranged in rows. Fill in the blanks to find out how many cars are in each row.</div><div style='width:60%'><img width='63%' src='./assests/images/question/7.png'></div></div>",
+            "inputBox":{ 
+              "row1":[
+              { "operand": "" },
+              { "operand": "÷" },
+              { "operand": "" },
+              { "operand": "=" },
+              { "operand": "" }
+            ]},
+            "answer": ["40","5","8"]
+          },
+          {
+            "questionNo": 8,
+            "question": "<div style='display:flex'><div style='width:45%'>Lisa saw treasure chests arranged in equal rows. Which of the following division statements matches the arrangement of the treasure chests?</div><div style='width:55%'><img width='100%' src='./assests/images/question/8.png'></div></div>",
+            "options": [
+              { "text": "48 ÷ 6 = 8" },
+              { "text": "45 ÷ 5 = 8" },
+              { "text": "45 ÷ 5 = 9" },
+              { "text": "32 ÷ 4 = 8" }
+            ],
+            "answer": 2
+          }
+        ]
+        
+        
+      },
+      {
+        "heading": "Divisor, Quotient ,Dividend",
+        "questions": [
+  {
+    "questionNo": 9,
+    "question": "If 36 ÷ 4 = 9, what is the divisor in this equation?",
+    "options": [
+      { "text": "36" },
+      { "text": "4" },
+      { "text": "9" }
+    ],
+    "answer": 1
+  },
+  {
+    "questionNo": 10,
+    "question": "Alex found a glowing tile that said: If 8 × 6 = 48, then what does 48 ÷ 8 equal?",
+    "options": [
+      { "text": "5" },
+      { "text": "7" },
+      { "text": "6" },
+      { "text": "8" }
+    ],
+    "answer": 2
+  },
+  {
+    "questionNo": 11,
+    "question": "If 81 ÷ 9 = 9, what is 81 in this division sentence?",
+    "options": [
+      { "text": "Divisor" },
+      { "text": "Quotient" },
+      { "text": "Remainder" },
+      { "text": "Dividend" }
+    ],
+    "answer": 3
+  },
+  {
+    "questionNo": 12,
+    "question": "If 10 × 7 = 70, then 70 ÷ 10 = 10. True or False?",
+    "options": [
+      { "text": "True" },
+      { "text": "False" }
+    ],
+    "answer": 1
+  }
+]
+
+      },
+      {
+        "heading": "Division Facts and Inequalities",
+        "questions": [
+  {
+    "questionNo": 13,
+    "question": "Does 6,000 ÷ 100 = 60?",
+    "options": [
+      { "text": "True" },
+      { "text": "False" }
+    ],
+    "answer": 0
+  },
+  {
+    "questionNo": 14,
+    "question": "A riddle scroll appears: Which of these equals 4?",
+    "options": [
+      { "text": "16 ÷ 2" },
+      { "text": "36 ÷ 6" },
+      { "text": "42 ÷ 6" },
+      { "text": "20 ÷ 5" }
+    ],
+    "answer": 3
+  },
+  {
+    "questionNo": 15,
+    "question": "Choose the appropriate sign to make the statement true: <br><img width='60%' src='./assests/images/question/9.png'>",
+    "options": [
+      { "text": ">" },
+      { "text": "<" }
+    ],
+    "answer": 0
+  },
+  {
+    "questionNo": 16,
+    "question": "What is 6,400 ÷ 8?",
+    "options": [
+      { "text": "600" },
+      { "text": "800" },
+      { "text": "700" },
+      { "text": "640" }
+    ],
+    "answer": 1
+  }
+]
+
+           
+      },
+      {
+        "heading": "Division sentences",
+        "questions": [
+  {
+    "questionNo": 17,
+    "question": "Jake is trying to solve a puzzle from his math homework. Complete the division sentence:<br><img width='60%' src='./assests/images/question/10.png'>",
+    "options": [
+      { "text": "8" },
+      { "text": "9" },
+      { "text": "7" },
+      { "text": "6" }
+    ],
+    "answer": 2
+  },
+  {
+    "questionNo": 18,
+    "question": "Lina is packing mini cakes into boxes for a party. Complete the division sentence to help her:<br><img width='60%' src='./assests/images/question/11.png'>",
+    "options": [
+      { "text": "45" },
+      { "text": "40" },
+      { "text": "50" },
+      { "text": "35" }
+    ],
+    "answer": 0
+  },
+  {
+    "questionNo": 19,
+    "question": "Mia is using an input-output table to solve a math challenge. What rule is used?<br><img width='45%' src='./assests/images/question/12.png'>",
+    "options": [
+      { "text": "Divide by 6" },
+      { "text": "Divide by 8" },
+      { "text": "Divide by 7" },
+      { "text": "Divide by 4" }
+    ],
+    "answer": 1
+  },
+  {
+            "questionNo": 20,
+            "question": "Aria is working on a tricky table in her math journal.<br>Help her complete the missing number.",
+            "type": "table",
+            "heading": "Rule: Divide by 7",
+            "inputBox": {
+
+              "row1": [
+                { "operand": "Input" },
+                { "operand": "Output" }
+              ],
+              "row2": [
+                { "operand": "49" },
+                { "operand": "" }
+              ],
+              "row3": [
+                { "operand": "42" },
+                { "operand": "6" }
+              ],
+              "row4": [
+                { "operand": "56" },
+                { "operand": "" }
+              ],
+              "row5": [
+                { "operand": "70" },
+                { "operand": "" }
+              ]
+            },
+            "answer": ["7","8","10"]
+          }
+]
+
+        
+         
+      },
+      {
+        "heading": "Division word problems",
+        "questions": [
+  {
+    "questionNo": 21,
+    "question": "A jewelry store has 60 rings and 80 earrings to display. They arrange the rings in 10 even rows. How many rings are in each row?",
+    "options": [
+      { "text": "5" },
+      { "text": "6" },
+      { "text": "7" },
+      { "text": "8" }
+    ],
+    "answer": 1
+  },
+  {
+    "questionNo": 22,
+    "question": "Ken picked 25 apples, 30 mangoes, 40 pears and 20 oranges from his orchard. If it takes 5 apples to make an apple tart, how many apple tarts can Ken make?",
+    "options": [
+      { "text": "4" },
+      { "text": "6" },
+      { "text": "5" },
+      { "text": "3" }
+    ],
+    "answer": 2
+  },
+  {
+    "questionNo": 23,
+    "question": "Rebecca is making bows to decorate for a party. She bought 10 meters of ribbon, and it takes 5 meters of ribbon to make each bow. How many bows can Rebecca make?",
+    "options": [
+      { "text": "1" },
+      { "text": "2" },
+      { "text": "3" },
+      { "text": "4" }
+    ],
+    "answer": 1
+  },
+  {
+    "questionNo": 24,
+    "question": "Eric needs 7 balls of yarn to knit a sweater. If Eric has 42 balls of yarn, how many sweaters can he make?",
+    "options": [
+      { "text": "8" },
+      { "text": "5" },
+      { "text": "7" },
+      { "text": "6" }
+    ],
+    "answer": 3
+  },
+  {
+    "questionNo": 25,
+    "question": "Sophie had 60 seashells and 120 pearls. She split the seashells evenly among 6 of her friends. How many seashells did Sophie give to each friend?",
+    "options": [
+      { "text": "8" },
+      { "text": "9" },
+      { "text": "10" },
+      { "text": "12" }
+    ],
+    "answer": 2
+  }
+]
+
+          
+      },
+      {
+        "heading": "Estimation",
+        "questions": [
+  {
+    "questionNo": 26,
+    "question": "Estimate the sum by rounding each number to the nearest ten and then adding. The sum is approximately:<br><img width='45%' src='./assests/images/question/13.png'>",
+    "options": [
+      { "text": "80" },
+      { "text": "90" },
+      { "text": "100" },
+      { "text": "70" }
+    ],
+    "answer": 1
+  },
+  {
+    "questionNo": 27,
+    "question": "Estimate the difference by rounding each number to the nearest ten and then subtracting. The difference is approximately:<br><img width='45%' src='./assests/images/question/14.png'>",
+    "options": [
+      { "text": "50" },
+      { "text": "60" },
+      { "text": "40" },
+      { "text": "30" }
+    ],
+    "answer": 0
+  },
+  {
+    "questionNo": 28,
+    "question": "Estimate the sum by rounding each number to the nearest hundred and then adding. The sum is approximately:<br><img width='45%' src='./assests/images/question/15.png'>",
+    "options": [
+      { "text": "600" },
+      { "text": "500" },
+      { "text": "700" },
+      { "text": "800" }
+    ],
+    "answer": 2
+  },
+  {
+    "questionNo": 29,
+    "question": "Estimate the difference by rounding each number to the nearest hundred and then subtracting. The difference is approximately:<br><img width='45%' src='./assests/images/question/16.png'>",
+    "options": [
+      { "text": "500" },
+      { "text": "400" },
+      { "text": "300" },
+      { "text": "600" }
+    ],
+    "answer": 1
+  },
+  {
+    "questionNo": 30,
+    "question": "Estimate the sum by rounding each number to the nearest hundred and then adding. The sum is approximately:<br><img width='45%' src='./assests/images/question/17.png'>",
+    "options": [
+      { "text": "600" },
+      { "text": "700" },
+      { "text": "800" },
+      { "text": "900" }
+    ],
+    "answer": 2
+  }
+]       
+      },
+      {
+        "heading": "Addition and Subtraction Word Problems",
+        "questions": [
+  {
+    "questionNo": 31,
+    "question": "Jill, Ryan, and Nate played a game together. Jill got 67 points. Ryan got 14 more points than Jill. Nate got 29 fewer points than Ryan. How many points did Nate get?",
+    "options": [
+      { "text": "58" },
+      { "text": "60" },
+      { "text": "54" },
+      { "text": "52" }
+    ],
+    "answer": 3
+  },
+  {
+    "questionNo": 32,
+    "question": "There are 22 adults and 19 kids in line for ice cream. The line is just too long and slow, so 8 people leave. How many people are in line now?",
+    "options": [
+      { "text": "31" },
+      { "text": "32" },
+      { "text": "33" },
+      { "text": "34" }
+    ],
+    "answer": 2
+  },
+  {
+    "questionNo": 33,
+    "question": "Martha had 18 fish in her fish tank. Her dad took her to the pet store to get some more. She picked out 4 goldfish and 3 guppies. How many fish does Martha have now?",
+    "options": [
+      { "text": "24" },
+      { "text": "25" },
+      { "text": "26" },
+      { "text": "23" }
+    ],
+    "answer": 1
+  },
+  {
+    "questionNo": 34,
+    "question": "Pedro has a book of puzzles. There are 55 easy puzzles. There are 18 fewer hard puzzles. How many puzzles are there in all?",
+    "options": [
+      { "text": "93" },
+      { "text": "90" },
+      { "text": "91" },
+      { "text": "92" }
+    ],
+    "answer": 3
+  },
+  {
+    "questionNo": 35,
+    "question": "Charlie loves running. He ran 9 miles today and 6 miles earlier this week. He will also run 12 miles later this week. How many miles is that altogether?",
+    "options": [
+      { "text": "25" },
+      { "text": "27" },
+      { "text": "26" },
+      { "text": "28" }
+    ],
+    "answer": 1
+  }
+]
+
+
+        
+        
+        
+        
+      }
+    ]
+  }
+  

@@ -1,0 +1,360 @@
+/* General Styles */
+body {
+  font-family: "Comic Neue", Arial, sans-serif;
+  background-color: #f5f5f5;
+  /* Light gray for background */
+  color: #333;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  /* Increased base font size */
+  font-weight: 600;
+  /* Make general text bolder */
+}
+
+.header {
+  /* width: 100%; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px 30px;
+  background-color: white;
+  text-align: left;
+}
+
+.container {
+  width: 90%;
+}
+
+.img {
+  /* vertical-align: middle; */
+}
+
+.logo {
+  width: 5%;
+  /* Slightly larger logo */
+}
+
+.header-image {
+  width: 30%;
+  /* Slightly larger header image */
+  height: auto;
+  margin-bottom: 6px;
+}
+
+#heading {
+  margin-top: 25px;
+  /* color: #D6B65B; */
+  font-weight: 600;
+  font-size: 3rem;
+  /* Larger heading font size */
+}
+
+.maindiv {
+  position: relative;
+}
+
+.quiz-container {
+  margin-top: 40px;
+  /* Increased spacing */
+}
+
+.numdiv {
+  font-size: 2.5rem;
+  color: #7a9a5b;
+  font-family: Georgia, serif;
+}
+
+.imgdiv img {
+  /* margin-top: 30px;  */
+}
+
+#questiondiv {
+  padding: 10px;
+  padding-bottom: 0;
+  border-radius: 10px;
+  font-size: 2.2rem;
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.picdiv{
+  width: 100%;
+}
+.question{
+  width: 75%;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  
+  color: black;
+  font-size: 1.8vw;
+}
+.menu li {
+  input:hover {
+    cursor: pointer;
+  }
+}
+.question_background{
+  height: 60%;
+}
+.btnOption {
+  width: 100%;
+  padding: 1.2rem 0;
+}
+
+.option-container {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  /* margin: 15px;  */
+  font-size: 2rem;
+  /* Larger font size for buttons */
+  background-color: #ff8343;
+  border-color: #d5a35f;
+  box-shadow: 5px 5px 10px gray;
+  /* Matching border color for buttons */
+  color: white;
+  font-weight: 700;
+  text-wrap: wrap;
+}
+
+.btn:hover {
+  background-color: #0d1282;
+  /* Dark Pastel Red for button hover effect */
+  border-color: #bf6c6c;
+  /* Matching border color on hover */
+  color: white !important;
+}
+
+.smallbtn:hover {
+  color: black !important;
+}
+
+#result {
+  margin-top: 20px;
+  /* Increased spacing */
+  font-size: 1.8rem;
+  /* Larger font size for results */
+  color: #6d8e8f;
+  /* Dark Pastel Teal for result text */
+}
+
+.progress {
+  height: 30px;
+  /* Increased height for progress bar */
+  margin: 20px;
+  /* Increased spacing */
+}
+
+.progress-bar {
+  transition: width 0.6s ease;
+}
+.input{
+  position: absolute;
+  top: 48%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+}
+input{
+  text-align: center;
+  width:7%;
+  max-height: 40px;
+  font-size: 3rem;
+} 
+#picdiv {
+
+  border-radius: 10px;
+  text-align: center;
+  color: #333;
+  font-size: 1.8rem;
+ 
+}
+.option{
+  display: flex;
+  flex-direction: row;
+}
+
+#question_background {
+  height: 100%;
+}
+
+.smallbtn {
+  margin: 15px;
+  /* Increased spacing */
+  font-size: 1.5rem;
+  /* Larger font size for small buttons */
+  background-color: #ffde4d;
+  border-color: #6d8e8f;
+  /* Matching border color for small buttons */
+  color: black;
+}
+
+.smallbtn:hover {
+  background-color: white;
+  border-color: black;
+  color: black;
+}
+
+.highlighted-btn {
+  background-color: yellow;
+  color: black;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+/* CSS for Answered Button */
+.answered-btn {
+  background-color: #4caf50;
+  /* Green background for answered button */
+  color: white;
+  /* White text color */
+}
+
+.next-btn-progress {
+  font-size: x-large;
+  background-color: #4caf50;
+  border-color: black;
+  /* Matching border color for buttons */
+  color: white;
+  font-weight: 700;
+}
+
+/* Increase the size of radio buttons */
+input[type="radio"] {
+  transform: scale(2);
+  /* Adjust the scale value as needed */
+  margin-right: 10px;
+  /* Add some space between the radio button and the label */
+}
+
+/* Adjust the label to align with the larger radio button */
+input[type="radio"] + label {
+  font-size: 1.2rem;
+  /* Adjust the font size as needed */
+}
+
+@media (max-width: 1250px) {
+  .input{
+    position: absolute;
+  top: 68%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+  
+}
+
+/* Media query for smaller screens */
+@media (max-width: 1024px) {
+  .input{
+    position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+  #question {
+    font-size: 2rem;
+    button {
+      width: 100%;
+      font-size: 1.5rem;
+    }
+  }
+}
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .input{
+    position: absolute;
+  top: 62%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+  #question {
+    font-size: 2rem !important;
+    /* Reduce font size for smaller screens */
+    width: 60%;
+    /* Adjust width for smaller screens */
+    
+    
+    
+    /* Adjust max-width for smaller screens */
+    color: black;
+  }
+
+  #question_background {
+    display: block;
+  }
+
+  #picdiv {
+    background-color: #b7a0d0;
+  }
+/* 
+  .moving-div {
+    display: none !important;
+  }
+
+  .grass {
+    display: none;
+  } */
+  #question {
+    font-size: 2rem !important;
+  }
+}
+
+/* Media query for very small screens */
+@media (max-width: 480px) {
+  #question {
+    font-size: 1.5rem !important;
+    /* Further reduce font size for very small screens */
+    width: 95%;
+    /* Adjust width for very small screens */
+    max-width: 400px;
+    /* Adjust max-width for very small screens */
+    color: black;
+  }
+  #questiondiv {
+    padding: 1rem !important;
+    img {
+      width: 100px;
+    }
+  }
+  #picdiv {
+    font-size: 1.3rem !important;
+  }
+  #question_background {
+    display: none;
+  }
+
+  #picdiv {
+    background-color: #b7a0d0;
+  }
+
+  .moving-div {
+    display: none !important;
+  }
+
+  .grass {
+    display: none !important;
+  }
+  .btn-large {
+    font-size: 14px !important;
+  }
+  #question {
+    font-size: 1rem !important;
+    
+    button {
+      width: 100% !important;
+      font-size: 0.9rem !important;
+    }
+  }
+  .option-container {
+    img {
+      height: 70px !important;
+    }
+  }
+}
