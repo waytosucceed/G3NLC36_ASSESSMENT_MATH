@@ -125,7 +125,7 @@
   },
   {
     "questionNo": 10,
-    "question": "Alex found a glowing tile that said: If 8 × 6 = 48, then what does 48 ÷ 8 equal?",
+    "question": "Alex found a glowing tile that said:<BR> If 8 × 6 = 48,<BR> then what does 48 ÷ 8 equal?",
     "options": [
       { "text": "5" },
       { "text": "7" },
@@ -147,7 +147,7 @@
   },
   {
     "questionNo": 12,
-    "question": "If 10 × 7 = 70, then 70 ÷ 10 = 10. True or False?",
+    "question": "If 10 × 7 = 70, <BR>then 70 ÷ 10 = 10. True or False?",
     "options": [
       { "text": "True" },
       { "text": "False" }
