@@ -74,7 +74,7 @@
             "questionNo": 6,
             "question": "Identifying the correct division statement represented by the model.<br><img width='65%' src='./assests/images/question/6.png'>",
             "options": [
-              { "text": "21 ÷ 3 = 7" },
+              { "text": "21 ÷ 3 = 6" },
               { "text": "24 ÷ 3 = 8" },
               { "text": "21 ÷ 7 = 3" },
               { "text": "27 ÷ 3 = 9" }
